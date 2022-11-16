@@ -1,24 +1,55 @@
-const Discord = require('discord.js');
-const config = require('./config.json');
+require('dotenv').config();
+const { Client, Events, GatewayIntentBits } = require('discord.js');
 
-const client = new Discord.Client({
+const client = new Client({
   intents: [
-    Discord.GatewayIntentBits.Guilds,
-    Discord.GatewayIntentBits.GuildMessages,
-    Discord.GatewayIntentBits.MessageContent,
-    Discord.GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildMembers,
   ],
 });
 
 const DEMIURGO_WORDS = ['DEMIURGO'];
+const REPUBLIC_WORDS = ['REPUBLICA', 'REPÚBLICA'];
+const GUNNAR_WORDS = ['GUNNAR'];
+const KING_WORDS = ['KING', 'REY'];
 
-client.on('messageCreate', function (message) {
+client.on(Events.MessageCreate, async (message) => {
   if (message.author.bot) return;
 
   const content = message.content.toUpperCase();
+
   if (DEMIURGO_WORDS.some((word) => content.includes(word))) {
-    message.reply(`¡¡Un Círculo, Una Familia!!`);
+    const response = await message.reply({
+      content: `¡¡Un Círculo, Una Familia!!`,
+      fetchReply: true,
+    });
+    response.react('1042364615666958366');
+  }
+
+  if (REPUBLIC_WORDS.some((word) => content.includes(word))) {
+    const response = await message.reply({
+      content: `¡¡Dulce et decorum est pro patria mori!!`,
+      fetchReply: true,
+    });
+  }
+
+  if (GUNNAR_WORDS.some((word) => content.includes(word))) {
+    const response = await message.reply({
+      content: `¡¡Viva King Gunnar!!`,
+      fetchReply: true,
+    });
+    response.react('🙌');
+  }
+
+  if (KING_WORDS.some((word) => content.includes(word))) {
+    const response = await message.reply({
+      content: `¡¡King Gunnar es el único y verdadero rey!!`,
+      fetchReply: true,
+    });
+    response.react('🙌');
   }
 });
 
-client.login(config.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN);
