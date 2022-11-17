@@ -12,6 +12,15 @@ const client = new Client({
 
 const DEMIURGO_WORDS = ['DEMIURGO'];
 const REPUBLIC_WORDS = ['REPUBLICA', 'REPÚBLICA'];
+const REPUBLIC_WORDS = ['REPUBLICA', 'REPÚBLICA'];
+const KARAKKAT_WORDS = ['KARAK', 'ENANO'];
+const TRO_WORDS = [
+  'TRO',
+  'TORMENTA',
+  'LEGACIES',
+  'PRELUDIUM',
+  'STORM',
+];
 const GUNNAR_WORDS = ['GUNNAR'];
 const KING_WORDS = ['KING', 'REY'];
 
@@ -33,6 +42,23 @@ client.on(Events.MessageCreate, async (message) => {
       content: `¡¡Dulce et decorum est pro patria mori!!`,
       fetchReply: true,
     });
+  }
+
+  if (KARAKKAT_WORDS.some((word) => content.includes(word))) {
+    const response = await message.reply({
+      content: `¡¡PIEDRA Y HIELO!!`,
+      fetchReply: true,
+    });
+    response.react('1021465972458147840');
+  }
+
+  if (TRO_WORDS.some((word) => content.includes(word))) {
+    const response = await message.reply({
+      content: `⚡¡¡Join the Storm!!⚡`,
+      fetchReply: true,
+    });
+    response.react('🙌');
+    response.react('⚡');
   }
 
   if (GUNNAR_WORDS.some((word) => content.includes(word))) {
