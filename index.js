@@ -12,7 +12,6 @@ const client = new Client({
 
 const DEMIURGO_WORDS = ['DEMIURGO'];
 const REPUBLIC_WORDS = ['REPUBLICA', 'REPÚBLICA'];
-const REPUBLIC_WORDS = ['REPUBLICA', 'REPÚBLICA'];
 const KARAKKAT_WORDS = ['KARAK', 'ENANO'];
 const TRO_WORDS = [
   'TRO',
