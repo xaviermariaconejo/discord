@@ -14,7 +14,7 @@ const DEMIURGO_WORDS = ['DEMIURGO'];
 const REPUBLIC_WORDS = ['REPUBLICA', 'REPÚBLICA'];
 const KARAKKAT_WORDS = ['KARAK', 'ENANO'];
 const TRO_WORDS = [
-  'TRO',
+  ' TRO ',
   'TORMENTA',
   'LEGACIES',
   'PRELUDIUM',
