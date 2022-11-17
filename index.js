@@ -22,6 +22,11 @@ const TRO_WORDS = [
 ];
 const GUNNAR_WORDS = ['GUNNAR'];
 const KING_WORDS = ['KING', 'REY'];
+const BULLVOICE_WORDS = ['BULLVOICE', 'BRAM', 'BRAU'];
+const BULLVOICE_WORDS_RESPONSES = [
+  '⚒️ ¡¡Khazad Aimenu!! ⚒️',
+  '⚒️ ¡¡Glòria al Clan Bram de Brau!! ⚒️',
+];
 
 client.on(Events.MessageCreate, async (message) => {
   if (message.author.bot) return;
@@ -49,11 +54,13 @@ client.on(Events.MessageCreate, async (message) => {
       fetchReply: true,
     });
     response.react('1021465972458147840');
+    response.react('⛰️');
+    response.react('🧊');
   }
 
   if (TRO_WORDS.some((word) => content.includes(word))) {
     const response = await message.reply({
-      content: `⚡¡¡Join the Storm!!⚡`,
+      content: `⚡ ¡¡Join the Storm!! ⚡`,
       fetchReply: true,
     });
     response.react('🙌');
@@ -74,6 +81,17 @@ client.on(Events.MessageCreate, async (message) => {
       fetchReply: true,
     });
     response.react('🙌');
+  }
+
+  if (BULLVOICE_WORDS.some((word) => content.includes(word))) {
+    const wordIndex = Math.floor(
+      Math.random() * BULLVOICE_WORDS_RESPONSES.length
+    );
+    const response = await message.reply({
+      content: BULLVOICE_WORDS_RESPONSES[wordIndex],
+      fetchReply: true,
+    });
+    response.react('⚒️');
   }
 });
 
