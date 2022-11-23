@@ -10,7 +10,7 @@ const client = new Client({
   ],
 });
 
-const DEMIURGO_WORDS = ['DEMIURGO'];
+const DEMIURGO_WORDS = ['DEMIURGO', 'CIRCULO', 'CÍRCULO'];
 const REPUBLIC_WORDS = ['REPUBLICA', 'REPÚBLICA'];
 const KARAKKAT_WORDS = ['KARAK', 'ENANO'];
 const TRO_WORDS = [
